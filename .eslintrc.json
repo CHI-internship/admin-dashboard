@@ -18,5 +18,10 @@
         "react"
     ],
     "rules": {
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
+      "no-console": "warn"
     }
 }
