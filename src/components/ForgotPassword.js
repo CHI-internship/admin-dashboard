@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
     Container,
     CssBaseline,
@@ -9,24 +8,40 @@ import {
     Alert,
     AlertTitle,
 } from '@mui/material';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 export default function ForgotPassword() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
+    const timer = useRef(null);
 
-    const handleSubmit = async event => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const email = data.get('rec-email');
+    useEffect(() => {
+        return () => clearTimeout(timer.current);
+    }, []);
 
-        if (email) {
+    const validationSchema = yup.object({
+        recEmail: yup
+            .string('Enter valid admin email to recover')
+            .required('Email is required'),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            recEmail: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: async values => {
+            console.log(values.recEmail);
+
             setSuccessAlert(true);
-            setTimeout(() => {
+            timer.current = setTimeout(() => {
                 setShouldRedirect(true);
             }, 3000);
-        }
-    };
+        },
+    });
 
     return (
         <Container component="main" maxWidth="xs">
@@ -54,14 +69,26 @@ export default function ForgotPassword() {
                 <Typography component="h1" variant="h5">
                     Recover password
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Box
+                    component="form"
+                    onSubmit={formik.handleSubmit}
+                    sx={{ mt: 1 }}
+                >
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
-                        id="rec-email"
+                        id="recEmail"
                         label="Email Address"
-                        name="rec-email"
+                        name="recEmail"
+                        error={
+                            formik.touched.recEmail &&
+                            Boolean(formik.errors.recEmail)
+                        }
+                        helperText={
+                            formik.touched.recEmail && formik.errors.recEmail
+                        }
+                        value={formik.values.recEmail}
+                        onChange={formik.handleChange}
                         autoFocus
                     />
                     <Button

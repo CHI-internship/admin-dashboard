@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
     Box,
     TextField,
@@ -9,32 +8,52 @@ import {
     Alert,
     AlertTitle,
 } from '@mui/material';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { passwordValidation } from '../utils/inputValidation.js';
 
 export default function ChangePassword() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
-    const [invalidPass, setInvalidPass] = useState(false);
-    const [unequalPass, setUnequalPass] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
+    const timer = useRef(null);
 
-    const handleSubmit = async event => {
-        event.preventDefault();
-        setInvalidPass(false);
-        setUnequalPass(false);
-        const data = new FormData(event.currentTarget);
-        const newPassword = data.get('new-password');
-        const confirmPassword = data.get('confirm-password');
+    useEffect(() => {
+        return () => clearTimeout(timer.current);
+    }, []);
 
-        if (!passwordValidation(newPassword)) setInvalidPass(true);
-        else if (newPassword !== confirmPassword) setUnequalPass(true);
-        else {
+    const validationSchema = yup.object({
+        newPassword: yup
+            .string('Enter new password')
+            .required('Password is required')
+            .matches(
+                /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
+                'Password must contain at least 8 Characters, One Uppercase, One Lowercase and One Number'
+            ),
+        confirmPassword: yup
+            .string('Confirm password')
+            .required('Password is required')
+            .oneOf([yup.ref('newPassword')], 'Passwords don`t match'),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            newPassword: '',
+            confirmPassword: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: async values => {
+            console.log({
+                newPassword: values.newPassword,
+                confirmPassword: values.confirmPassword,
+            });
+
             setSuccessAlert(true);
-            setTimeout(() => {
+            timer.current = setTimeout(() => {
                 setShouldRedirect(true);
             }, 3000);
-        }
-    };
+        },
+    });
 
     return (
         <Container component="main" maxWidth="xs">
@@ -62,35 +81,47 @@ export default function ChangePassword() {
                 <Typography component="h1" variant="h5">
                     Change Password
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Box
+                    component="form"
+                    onSubmit={formik.handleSubmit}
+                    sx={{ mt: 1 }}
+                >
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
-                        error={invalidPass}
-                        helperText={
-                            invalidPass
-                                ? 'Password must be at least 8 characters length, include at least one uppercase letter, one lowercase letter and one number'
-                                : ''
+                        error={
+                            formik.touched.newPassword &&
+                            Boolean(formik.errors.newPassword)
                         }
-                        id="new-password"
+                        helperText={
+                            formik.touched.newPassword &&
+                            formik.errors.newPassword
+                        }
+                        id="newPassword"
                         label="New Password"
-                        name="new-password"
+                        name="newPassword"
                         type="password"
+                        value={formik.values.newPassword}
+                        onChange={formik.handleChange}
                         autoFocus
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
-                        error={unequalPass}
-                        helperText={
-                            unequalPass ? 'Passwords must be equal' : ''
+                        error={
+                            formik.touched.confirmPassword &&
+                            Boolean(formik.errors.confirmPassword)
                         }
-                        id="confirm-password"
+                        helperText={
+                            formik.touched.confirmPassword &&
+                            formik.errors.confirmPassword
+                        }
+                        id="confirmPassword"
                         label="Confirm Password"
-                        name="confirm-password"
+                        name="confirmPassword"
                         type="password"
+                        value={formik.values.confirmPassword}
+                        onChange={formik.handleChange}
                     />
                     <Button
                         type="submit"

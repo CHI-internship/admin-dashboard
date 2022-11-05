@@ -1,4 +1,3 @@
-import React from 'react';
 import SingIn from './components/SignIn';
 import ForgotPassword from './components/ForgotPassword';
 import ChangePassword from './components/ChangePassword';

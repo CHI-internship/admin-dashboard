@@ -22,6 +22,7 @@
         "error",
         "prefer-double"
       ],
-      "no-console": "warn"
+      "no-console": "warn",
+      "react/react-in-jsx-scope": "off"
     }
 }
