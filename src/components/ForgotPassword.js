@@ -13,6 +13,12 @@ import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
+const validationSchema = yup.object({
+    recEmail: yup
+        .string('Enter valid admin email to recover')
+        .required('Email is required'),
+});
+
 export default function ForgotPassword() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
@@ -21,12 +27,6 @@ export default function ForgotPassword() {
     useEffect(() => {
         return () => clearTimeout(timer.current);
     }, []);
-
-    const validationSchema = yup.object({
-        recEmail: yup
-            .string('Enter valid admin email to recover')
-            .required('Email is required'),
-    });
 
     const formik = useFormik({
         initialValues: {

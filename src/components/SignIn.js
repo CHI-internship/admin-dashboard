@@ -10,14 +10,12 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 
-export default function SingIn() {
-    const validationSchema = yup.object({
-        email: yup
-            .string('Enter valid admin email')
-            .required('Email is required'),
-        password: yup.string('Enter password').required('Password is required'),
-    });
+const validationSchema = yup.object({
+    email: yup.string('Enter valid admin email').required('Email is required'),
+    password: yup.string('Enter password').required('Password is required'),
+});
 
+export default function SingIn() {
     const formik = useFormik({
         initialValues: {
             email: '',

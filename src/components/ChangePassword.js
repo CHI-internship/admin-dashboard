@@ -13,6 +13,20 @@ import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
+const validationSchema = yup.object({
+    newPassword: yup
+        .string('Enter new password')
+        .required('Password is required')
+        .matches(
+            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
+            'Password must contain at least 8 Characters, One Uppercase, One Lowercase and One Number'
+        ),
+    confirmPassword: yup
+        .string('Confirm password')
+        .required('Password is required')
+        .oneOf([yup.ref('newPassword')], 'Passwords don`t match'),
+});
+
 export default function ChangePassword() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
@@ -21,20 +35,6 @@ export default function ChangePassword() {
     useEffect(() => {
         return () => clearTimeout(timer.current);
     }, []);
-
-    const validationSchema = yup.object({
-        newPassword: yup
-            .string('Enter new password')
-            .required('Password is required')
-            .matches(
-                /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
-                'Password must contain at least 8 Characters, One Uppercase, One Lowercase and One Number'
-            ),
-        confirmPassword: yup
-            .string('Confirm password')
-            .required('Password is required')
-            .oneOf([yup.ref('newPassword')], 'Passwords don`t match'),
-    });
 
     const formik = useFormik({
         initialValues: {
