@@ -1,7 +1,8 @@
 import SingIn from './components/SignIn';
 import ForgotPassword from './components/ForgotPassword';
-import ChangePassword from './components/ChangePassword';
+import ResetPassword from './components/ResetPassword';
 import NoMatch from './components/NoMatchPage';
+import UpdatePassword from './components/UpdatePassword';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -15,8 +16,12 @@ function App() {
                         element={<ForgotPassword />}
                     />
                     <Route
-                        path="/admin/change-password"
-                        element={<ChangePassword />}
+                        path="/admin/reset-password"
+                        element={<ResetPassword />}
+                    />
+                    <Route
+                        path="/admin/update-password"
+                        element={<UpdatePassword />}
                     />
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
