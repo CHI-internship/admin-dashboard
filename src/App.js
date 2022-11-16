@@ -1,3 +1,4 @@
+import './Global.scss'
 import SingIn from './components/SignIn';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';

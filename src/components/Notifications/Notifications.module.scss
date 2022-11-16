@@ -1,0 +1,72 @@
+.popup {
+    position: relative;
+}
+
+
+.mainIcon {
+    position: absolute;
+    cursor: pointer;
+}
+
+
+.info {
+    position: absolute;
+    top: 55px;
+    padding: 10px;
+    max-width: 330px;
+    width: 100%;
+    max-height: 210px;
+    overflow: hidden;
+    background-color: #e3e3e37a;
+    border-radius: 8px;
+
+    .close {
+        width: 15px;
+        cursor: pointer;
+    }
+
+    .head {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #b4b3b396;
+        padding-bottom: 5px;
+
+        span {
+            letter-spacing: 4px;
+        }
+    }
+}
+
+.notifications {
+    max-width: 320px;
+    max-height: 170px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-top: 10px;
+
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: rgb(180, 179, 179);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgb(139, 139, 139);
+    }
+
+
+    .notification {
+        margin-bottom: 8px;
+        background-color: #cecdcd5e;
+        padding: 5px;
+        border-radius: 8px;
+        margin-right: 5px;
+    }
+}
