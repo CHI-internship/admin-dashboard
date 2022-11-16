@@ -15,7 +15,6 @@ export const Notifications = () => {
                 e.target.className.includes('close')) {
                 setOpen(false)
                 document.removeEventListener('click', () => { })
-                return
             }
         })
     }
