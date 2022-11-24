@@ -2,6 +2,11 @@
 
 Admin dashboard for volunteer project KraudDonate
 
+## Configuration
+
+1. Create .env file in root
+2. Add values from .env.example
+
 ## How to run
 
 For the installing dependencies/
