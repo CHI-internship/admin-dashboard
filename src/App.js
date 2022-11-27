@@ -4,11 +4,13 @@ import ResetPassword from './components/ResetPassword';
 import NoMatch from './components/NoMatchPage';
 import UpdatePassword from './components/UpdatePassword';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/header/Header';
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path="/admin/sign-in" element={<SingIn />} />
                     <Route
