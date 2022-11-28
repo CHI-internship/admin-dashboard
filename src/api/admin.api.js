@@ -1,11 +1,17 @@
 import { axiosInstance } from "./http";
 
 class AdminService {
-  async login(email, password) {
+  async login(credentials) {
     const admin = await axiosInstance
-      .post('admin/auth', {email, password})
+      .post('admin/auth/sign-in/', credentials)
       .then(data => data.data) 
 
+    if (admin?.token) {
+      localStorage.setItem(
+        'token',
+        admin.token
+      );
+    }  
     return admin;  
   }
 
@@ -25,9 +31,9 @@ class AdminService {
     return request;  
   }
 
-  async approveRequest(userId, status) {
+  async approveRequest(userId, status, message = null) {
     const res = await axiosInstance
-      .post('admin/requests/', {userId, status})
+      .post('admin/requests/', {userId, status, message})
       .then(data => data.data) 
 
     return res;  

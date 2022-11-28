@@ -13,6 +13,11 @@ const getRequests = async (setState) => {
   setState(requests);
 }
 
+const getRequest = async (id) => {
+  const request = await adminService.getVolunteerRequest(id);
+  return request;
+}
+
 export default function Requests() {
   const navigate = useNavigate();
   const [requests, SetRequests] = useState([]);
@@ -20,9 +25,7 @@ export default function Requests() {
   useEffect(() => {
     getRequests(SetRequests);
   }, [])
-
-  console.log('requests', requests)
-
+  
   return (
     <div>
       {requests && requests.map(element => 
@@ -37,7 +40,13 @@ export default function Requests() {
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">Approve</Button>
+      <Button size="small" onClick={async () => {
+        const request = await getRequest(element.id);
+        await adminService.approveRequest(request.userId, true);
+        navigate('/admin/requests'); 
+      }}>
+        Approve
+      </Button>
       <Button size="small"
       onClick={() => navigate(`/admin/request/${element.id}`)}>
         Learn More

@@ -4,6 +4,8 @@ import ResetPassword from './components/ResetPassword';
 import NoMatch from './components/NoMatchPage';
 import UpdatePassword from './components/UpdatePassword';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Requests from './components/Requests';
+import Request from './components/Request';
 
 function App() {
     return (
@@ -22,6 +24,14 @@ function App() {
                     <Route
                         path="/admin/update-password"
                         element={<UpdatePassword />}
+                    />
+                    <Route
+                        path="/admin/requests"
+                        element={<Requests />}
+                    />
+                    <Route
+                        path="/admin/request/:id"
+                        element={<Request />}
                     />
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
