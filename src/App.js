@@ -6,11 +6,13 @@ import UpdatePassword from './components/UpdatePassword';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Requests from './components/Requests';
 import Request from './components/Request';
+import Header from './components/header/Header';
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path="/admin/sign-in" element={<SingIn />} />
                     <Route
