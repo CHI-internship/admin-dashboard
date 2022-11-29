@@ -24,8 +24,8 @@ export default function SingIn() {
             password: '',
         },
         validationSchema: validationSchema,
-        onSubmit: async values => {
-            await adminService.login(values)
+        onSubmit: values => {
+            adminService.login(values)
                 .then(() => navigate('/admin/requests'));                   
         },
     });

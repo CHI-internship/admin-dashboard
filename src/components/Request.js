@@ -54,7 +54,7 @@ export default function Requests() {
             <Typography variant="body1" color="text.secondary" sx={{ paddingTop: "10px", marginBottom: "10px"}}>
               Document:
             </Typography>
-            {extension !== 'pdf' ? <div style={{
+            {extension !== 'pdf' && <div style={{
               backgroundImage: `url(${request.document})`,
               width: '100%',
               height: '300px',
@@ -64,7 +64,7 @@ export default function Requests() {
               backgroundRepeat: 'no-repeat', 
               display: "block"
            }}>
-            </div> : null}
+            </div>}
             {extension === 'pdf' &&
               <iframe height="400" width="100%" src={"https://docs.google.com/gview?url=" + request.document + "&embedded=true"}></iframe>
             }
