@@ -13,10 +13,7 @@ const getRequests = async (setState) => {
   setState(requests);
 }
 
-const getRequest = async (id) => {
-  const request = await adminService.getVolunteerRequest(id);
-  return request;
-}
+const getRequest = (id) => adminService.getVolunteerRequest(id);
 
 export default function Requests() {
   const navigate = useNavigate();
@@ -26,33 +23,34 @@ export default function Requests() {
     getRequests(SetRequests);
   }, [])
   
+  const handleApprove = async (id) => {
+    const request = await getRequest(id);
+    await adminService.approveRequest(request.userId, true);
+    navigate('/admin/requests'); 
+  }
   return (
     <div>
       {requests && requests.map(element => 
-      <Card sx={{ maxWidth: 345, marginLeft: "40%" }} key={element.id}>
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
-        Activate Request
-      </Typography>
-      <Typography variant="body1" color="text.secondary">
-        Country - {element.country} <br/>
-        Card number - {element.card_number}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small" onClick={async () => {
-        const request = await getRequest(element.id);
-        await adminService.approveRequest(request.userId, true);
-        navigate('/admin/requests'); 
-      }}>
-        Approve
-      </Button>
-      <Button size="small"
-      onClick={() => navigate(`/admin/request/${element.id}`)}>
-        Learn More
-      </Button>
-    </CardActions>
-  </Card>
+        <Card sx={{ maxWidth: 345, marginLeft: "40%" }} key={element.id}>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Activate Request
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Country - {element.country} <br/>
+              Card number - {element.card_number}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small" onClick={async () => await handleApprove(element.id)}>
+              Approve
+            </Button>
+            <Button size="small"
+            onClick={() => navigate(`/admin/request/${element.id}`)}>
+              Learn More
+            </Button>
+          </CardActions>
+      </Card>
     )
     }
     </div>

@@ -15,28 +15,22 @@ class AdminService {
     return admin;  
   }
 
-  async getVolunteersRequests() {
-    const requests = await axiosInstance
+  getVolunteersRequests() {
+    return axiosInstance
       .get('admin/requests')
       .then(data => data.data) 
-
-    return requests;  
   }
 
-  async getVolunteerRequest(id) {
-    const request = await axiosInstance
+  getVolunteerRequest(id) {
+    return axiosInstance
       .get(`admin/requests/${id}`)
-      .then(data => data.data) 
-
-    return request;  
+      .then(data => data.data)   
   }
 
-  async approveRequest(userId, status, message = null) {
-    const res = await axiosInstance
+  approveRequest(userId, status, message = null) {
+    return axiosInstance
       .post('admin/requests/', {userId, status, message})
       .then(data => data.data) 
-
-    return res;  
   }
 }
 
