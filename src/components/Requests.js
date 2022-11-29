@@ -42,17 +42,16 @@ export default function Requests() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={async () => await handleApprove(element.id)}>
+            <Button size="small" onClick={() => handleApprove(element.id)}>
               Approve
             </Button>
             <Button size="small"
-            onClick={() => navigate(`/admin/request/${element.id}`)}>
+              onClick={() => navigate(`/admin/request/${element.id}`)}>
               Learn More
             </Button>
           </CardActions>
       </Card>
-    )
-    }
+    )}
     </div>
   )
 }

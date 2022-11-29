@@ -9,7 +9,6 @@ import adminService from '../api/admin.api'
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 
-
 const getRequest = async (setState) => {
   const id = location.href.split('/')[5];
   const request = await adminService.getVolunteerRequest(id);
@@ -55,7 +54,7 @@ export default function Requests() {
             <Typography variant="body1" color="text.secondary" sx={{ paddingTop: "10px", marginBottom: "10px"}}>
               Document:
             </Typography>
-            <div style={{
+            {extension !== 'pdf' ? <div style={{
               backgroundImage: `url(${request.document})`,
               width: '100%',
               height: '300px',
@@ -63,10 +62,9 @@ export default function Requests() {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat', 
-              display: extension !== 'pdf'  ? "block" : "none"
-            }}>
-            </div>
-        
+              display: "block"
+           }}>
+            </div> : null}
             {extension === 'pdf' &&
               <iframe height="400" width="100%" src={"https://docs.google.com/gview?url=" + request.document + "&embedded=true"}></iframe>
             }
@@ -74,23 +72,22 @@ export default function Requests() {
           </CardContent>
           <CardActions>
             <Button size="small" variant="contained"
-            onClick={async () => await handleApprove()}
+              onClick={() => handleApprove()}
             >
               Approve
             </Button>
             <Button size="small" variant="contained"
-            onClick={async () => await handleReject()}
+              onClick={() => handleReject()}
             >
               Reject
             </Button>
             <Button size="small" variant="contained" sx={{ paddingLeft: "7px"}}
-            onClick={() =>  location = request.document}>
+              onClick={() => location = request.document}>
               Download the document
             </Button>
           </CardActions>
         </Card>
-      }
-  
+      }  
     </div>
   )
 }
