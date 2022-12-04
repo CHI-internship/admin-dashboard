@@ -1,0 +1,34 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 520px;
+    height: 55px;
+    width: 100%;
+    padding: 10px 5px 10px 10px;
+    box-shadow: 5px 5px 10px #9e9e9e7d;
+    border-radius: 8px;
+    margin: 0 auto 10px;
+}
+
+.arrowContainer {
+    transition: all .4s;
+    padding: 13px 13px 13px 17px;
+
+    .arrow {
+        width: 25px;
+        transform: rotate(-90deg);
+    }
+
+    &:hover {
+        background-color: #e9e9e970;
+        cursor: pointer;
+        padding: 13px 13px 13px 17px;
+        border-radius: 50%;
+    }
+}
+
+
+.infoItem+.infoItem {
+    margin-top: 5px;
+}
