@@ -9,15 +9,15 @@ import {
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate, NavLink } from 'react-router-dom';
-import adminService from '../api/admin.api';
+import adminService from '../../api/admin.api';
 
 const validationSchema = yup.object({
     email: yup.string('Enter valid admin email').required('Email is required'),
     password: yup.string('Enter password').required('Password is required'),
 });
- 
-export default function SingIn() {
-    const navigate = useNavigate();  
+
+export default function SignIn() {
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -26,7 +26,7 @@ export default function SingIn() {
         validationSchema: validationSchema,
         onSubmit: values => {
             adminService.login(values)
-                .then(() => navigate('/admin/requests'));                   
+                .then(() => navigate('/admin/requests'));
         },
     });
 
