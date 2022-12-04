@@ -1,12 +1,9 @@
-import SingIn from './components/SignIn';
-import ForgotPassword from './components/ForgotPassword';
-import ResetPassword from './components/ResetPassword';
 import NoMatch from './components/NoMatchPage';
-import UpdatePassword from './components/UpdatePassword';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Requests from './components/Requests';
-import Request from './components/Request';
+import RequestList from './components/requests/RequestList';
 import Header from './components/header/Header';
+import { SignIn, ForgotPassword, ResetPassword, UpdatePassword } from './components/auth';
+import RequestPage from './components/requests/RequestPage/RequestPage';
 
 function App() {
     return (
@@ -14,7 +11,7 @@ function App() {
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path="/admin/sign-in" element={<SingIn />} />
+                    <Route path="/admin/sign-in" element={<SignIn />} />
                     <Route
                         path="/admin/forgot-password"
                         element={<ForgotPassword />}
@@ -28,12 +25,12 @@ function App() {
                         element={<UpdatePassword />}
                     />
                     <Route
-                        path="/admin/requests"
-                        element={<Requests />}
+                        path="/admin/request"
+                        element={<RequestList />}
                     />
                     <Route
                         path="/admin/request/:id"
-                        element={<Request />}
+                        element={<RequestPage />}
                     />
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
