@@ -1,12 +1,15 @@
 import cn from 'classnames'
+import { useContext } from 'react';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import logo from '../../images/Logo.svg';
 import style from './Header.module.scss';
 import logoutIcon from '../../images/logout.icon.svg'
+import { RequestContext } from '../../context/request.context';
 
 const Header = () => {
+    const { requests } = useContext(RequestContext)
     const [authorized, setAuthorized] = useState(false)
     const navigate = useNavigate()
 
@@ -31,7 +34,7 @@ const Header = () => {
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <NavLink to="/admin/request" className={({ isActive }) =>
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>
-                                Open requests
+                                Open requests ({requests.length})
                             </NavLink>
                             <NavLink to="/close-request" className={({ isActive }) =>
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>

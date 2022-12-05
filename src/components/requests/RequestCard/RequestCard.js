@@ -1,12 +1,13 @@
-import style from './RequestCard.module.scss'
-import arrowIcon from '../../../images/arrow.svg'
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
+import style from './RequestCard.module.scss';
+import arrowIcon from '../../../images/arrow.svg';
 
 
 export const RequestCard = (request) => {
 
     return (
-        <div className={style.card}>
+        <div className={cn(style.card, { [style.isNew]: request.request?.isNew })}>
             <div className={style.info}>
                 <div className={style.infoItem}>Country: {request.request.country}</div>
                 <div className={style.infoItem}>Card number: {request.request.card_number}</div>
