@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install && chmod ug+x .husky/*"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +48,7 @@
     "eslint": "^8.26.0",
     "eslint-plugin-react": "^7.31.10",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^13.1.0",
     "prettier": "2.7.1"
   }
 }
