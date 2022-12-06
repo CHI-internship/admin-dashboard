@@ -34,24 +34,6 @@
     padding: 10px;
     border-radius: 8px;
     margin: 0 5px 7px 0;
-    animation-name: notifications;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
-}
-
-@keyframes notifications {
-    from {
-        display: block;
-    }
-
-    80% {
-        display: block;
-    }
-
-    to {
-        display: none;
-    }
 }
 
 .title {

@@ -36,10 +36,6 @@ const Header = () => {
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>
                                 Open requests ({requests.length})
                             </NavLink>
-                            <NavLink to="/close-request" className={({ isActive }) =>
-                                cn(style.menuItem, { [style.activeLink]: isActive })}>
-                                Closed requests
-                            </NavLink>
                             <Button onClick={logout} sx={{ padding: '0', margin: '0 -10px' }}>
                                 <img src={logoutIcon} className={style.logoutIcon} />
                             </Button>

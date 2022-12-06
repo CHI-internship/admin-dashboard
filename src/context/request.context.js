@@ -5,12 +5,13 @@ import adminService from '../api/admin.api';
 export function useRequests() {
     const [requests, setRequests] = useState([]);
 
+    async function realodRequests() {
+        await adminService.getVolunteersRequests()
+            .then(data => setRequests(data.reverse()));
+    }
+
     useEffect(() => {
-        async function getQeruests() {
-            await adminService.getVolunteersRequests()
-                .then(data => setRequests(data.reverse()));
-        }
-        getQeruests();
+        realodRequests();
 
         const eventSource = new EventSource(
             `${process.env.REACT_APP_BASE_SERVICE_URL}admin/requests/sse`);
@@ -20,7 +21,7 @@ export function useRequests() {
         }
     }, []);
 
-    return { requests, setRequests };
+    return { requests, setRequests, realodRequests };
 }
 
 export const RequestContext = createContext(null);
