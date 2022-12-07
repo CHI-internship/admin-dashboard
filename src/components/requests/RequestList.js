@@ -1,12 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { RequestContext } from '../../context/request.context';
 import { RequestCard } from './RequestCard/RequestCard';
 
 
 export default function RequestList() {
-  const { requests, realodRequests } = useContext(RequestContext);
-
-  useEffect(() => { realodRequests() }, []);
+  const { requests } = useContext(RequestContext);
 
   return (
     <div style={{ marginTop: "20px" }}>

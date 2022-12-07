@@ -21,7 +21,7 @@ export function useRequests() {
         }
     }, []);
 
-    return { requests, setRequests, realodRequests };
+    return { requests, setRequests };
 }
 
 export const RequestContext = createContext(null);

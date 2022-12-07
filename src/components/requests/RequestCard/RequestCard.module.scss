@@ -32,21 +32,3 @@
 .infoItem+.infoItem {
     margin-top: 5px;
 }
-
-.isNew {
-    background-color: #3fc6384a;
-    animation-name: newRequest;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
-}
-
-@keyframes newRequest {
-    80% {
-        background-color: #3fc6384a;
-    }
-
-    to {
-        background-color: transparent;
-    }
-}
