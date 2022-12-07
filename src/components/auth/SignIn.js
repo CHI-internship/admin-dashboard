@@ -8,8 +8,10 @@ import {
 } from '@mui/material';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { useContext } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import adminService from '../../api/admin.api';
+import { RequestContext } from '../../context/request.context';
 
 const validationSchema = yup.object({
     email: yup.string('Enter valid admin email').required('Email is required'),
@@ -17,7 +19,9 @@ const validationSchema = yup.object({
 });
 
 export default function SignIn() {
+    const { setAuthorized, realodRequests } = useContext(RequestContext)
     const navigate = useNavigate();
+    
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -26,7 +30,11 @@ export default function SignIn() {
         validationSchema: validationSchema,
         onSubmit: values => {
             adminService.login(values)
-                .then(() => navigate('/admin/requests'));
+                .then(() => {
+                    realodRequests();
+                    setAuthorized(true);
+                    navigate('/admin/request', { replace: true });
+                })
         },
     });
 
