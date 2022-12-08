@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import style from './Header.module.scss';
 import { RequestContext } from '../../context/request.context';
 import logo from '../../images/Logo.svg';
-import logoutIcon from '../../images/logout.icon.svg'
+import { ReactComponent as LogoutIcon } from '../../images/logout.icon.svg'
 
 const Header = () => {
     const { requests, authorized, setAuthorized } = useContext(RequestContext)
@@ -32,14 +32,14 @@ const Header = () => {
                     </Typography>
                 </div>
                 <div className={style.menu}>
-                    {authorized ?
+                    {!authorized ?
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <NavLink to="/admin/request" className={({ isActive }) =>
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>
                                 Open requests ({requests.length})
                             </NavLink>
                             <Button onClick={logout} sx={{ padding: '0', margin: '0 -10px' }}>
-                                <img src={logoutIcon} className={style.logoutIcon} />
+                                <LogoutIcon className={style.logoutIcon} />
                             </Button>
                         </div>
                         :
