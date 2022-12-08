@@ -7,7 +7,7 @@ export function useRequests() {
     const [authorized, setAuthorized] = useState(false);
 
     async function realodRequests() {
-        await adminService.getVolunteersRequests()
+        return adminService.getVolunteersRequests()
             .then(data => setRequests(data.reverse()));
     }
 

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { ForgotPassword, ResetPassword, SignIn, UpdatePassword } from './components/auth';
 import Header from './components/header/Header';

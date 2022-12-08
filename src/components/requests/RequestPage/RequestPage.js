@@ -23,10 +23,11 @@ export default function RequestPage() {
     navigate('/admin/request');
   }
 
+  async function getRequest() {
+    await adminService.getVolunteerRequest(+id).then(data => setRequest(data))
+  }
+
   useEffect(() => {
-    async function getRequest() {
-      await adminService.getVolunteerRequest(+id).then(data => setRequest(data))
-    }
     getRequest()
   }, [])
 
@@ -35,11 +36,9 @@ export default function RequestPage() {
       <div className={style.docs}>
         {
           docExt == 'pdf' ?
-            <iframe src={"https://docs.google.com/gview?url=" + request.document + "&embedded=true"}>
-            </iframe>
+            <iframe src={"https://docs.google.com/gview?url=" + request.document + "&embedded=true"} />
             :
-            <div className={style.docImage} style={{ backgroundImage: `url(${request.document})` }}>
-            </div>
+            <div className={style.docImage} style={{ backgroundImage: `url(${request.document})` }} />
         }
         <div className={style.download} onClick={() => location = request.document}>
           Download <img src={downloadIcon} />
