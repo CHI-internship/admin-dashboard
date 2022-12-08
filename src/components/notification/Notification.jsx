@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+
 import style from "./Notifications.module.scss";
 import arrowIcon from "../../images/arrow.svg";
 import closeIcon from "../../images/close.svg";

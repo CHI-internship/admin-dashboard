@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import style from './RequestCard.module.scss';
 import arrowIcon from '../../../images/arrow.svg';
 

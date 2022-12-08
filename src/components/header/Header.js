@@ -1,15 +1,15 @@
-import cn from 'classnames'
-import { useContext } from 'react';
-import { useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
-import logo from '../../images/Logo.svg';
+import cn from 'classnames'
+import { useContext, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 import style from './Header.module.scss';
-import logoutIcon from '../../images/logout.icon.svg'
 import { RequestContext } from '../../context/request.context';
+import logo from '../../images/Logo.svg';
+import logoutIcon from '../../images/logout.icon.svg'
 
 const Header = () => {
-    const { requests, authorized, setAuthorized} = useContext(RequestContext)
+    const { requests, authorized, setAuthorized } = useContext(RequestContext)
     const navigate = useNavigate()
 
     const logout = () => {

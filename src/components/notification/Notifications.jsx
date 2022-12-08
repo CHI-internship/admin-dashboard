@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import style from "./Notifications.module.scss";
+
 import { Notification } from "./Notification";
+import style from "./Notifications.module.scss";
 import { RequestContext } from "../../context/request.context";
 
 
