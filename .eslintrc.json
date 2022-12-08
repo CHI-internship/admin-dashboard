@@ -26,6 +26,12 @@
         "no-console": "warn",
         "react/react-in-jsx-scope": "off",
         "import/no-duplicates": "warn",
+        "no-multiple-empty-lines": [
+            "warn",
+            {
+                "max": 1
+            }
+        ],
         "import/order": [
             1,
             {

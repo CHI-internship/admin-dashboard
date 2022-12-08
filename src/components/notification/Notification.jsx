@@ -5,7 +5,6 @@ import style from "./Notifications.module.scss";
 import arrowIcon from "../../images/arrow.svg";
 import closeIcon from "../../images/close.svg";
 
-
 export const Notification = (request) => {
     const ref = useRef(null);
     const timer = useRef(null);

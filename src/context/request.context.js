@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from 'react';
 
 import adminService from '../api/admin.api';
 
-
 export function useRequests() {
     const [requests, setRequests] = useState([]);
     const [authorized, setAuthorized] = useState(false);

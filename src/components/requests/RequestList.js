@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { RequestCard } from './RequestCard/RequestCard';
 import { RequestContext } from '../../context/request.context';
 
-
 export default function RequestList() {
   const { requests } = useContext(RequestContext);
 

@@ -18,7 +18,9 @@ const Header = () => {
         navigate('/admin/sign-in')
     }
 
-    useEffect(() => { if (localStorage.getItem('token')) setAuthorized(true) }, [])
+    useEffect(() => {
+        if (localStorage.getItem('token')) setAuthorized(true)
+    }, [])
 
     return (
         <AppBar position="static" color="primary">

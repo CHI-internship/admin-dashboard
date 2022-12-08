@@ -7,7 +7,6 @@ import style from './RequestPage.module.scss'
 import adminService from '../../../api/admin.api'
 import downloadIcon from '../../../images/download.svg'
 
-
 export default function RequestPage() {
   const [request, setRequest] = useState({})
   const [rejectReason, setRejectReason] = useState('')
