@@ -32,7 +32,7 @@ const Header = () => {
                     </Typography>
                 </div>
                 <div className={style.menu}>
-                    {!authorized ?
+                    {authorized ?
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <NavLink to="/admin/request" className={({ isActive }) =>
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>
@@ -54,7 +54,7 @@ const Header = () => {
                     }
                 </div>
             </Toolbar>
-        </AppBar >
+        </AppBar>
     );
 };
 

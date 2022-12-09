@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import style from "./Notifications.module.scss";
@@ -8,7 +8,13 @@ import closeIcon from "../../images/close.svg";
 export const Notification = (request) => {
     const ref = useRef(null);
     const timer = useRef(null);
-    timer.current = setTimeout(() => ref.current.style.display = "none", 30000);
+
+    useEffect(() => {
+        timer.current = setTimeout(() => ref.current.style.display = "none", 30000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [])
 
     return (
         <div ref={ref}

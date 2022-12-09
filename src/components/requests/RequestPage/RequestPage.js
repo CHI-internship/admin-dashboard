@@ -24,7 +24,7 @@ export default function RequestPage() {
   }
 
   async function getRequest() {
-    await adminService.getVolunteerRequest(+id).then(data => setRequest(data))
+    adminService.getVolunteerRequest(+id).then(data => setRequest(data))
   }
 
   useEffect(() => {
