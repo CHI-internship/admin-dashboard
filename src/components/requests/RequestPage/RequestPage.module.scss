@@ -1,0 +1,48 @@
+.page {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    margin: 35px auto 0;
+}
+
+.info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &Item {
+        margin-bottom: 10px;
+    }
+}
+
+.docs {
+    position: relative;
+    height: 290px;
+    width: 350px;
+
+    iframe {
+        height: 290px;
+        width: 350px;
+    }
+
+    .download {
+        position: absolute;
+        cursor: pointer;
+        font-size: 13px;
+
+        img {
+            width: 13px;
+            height: 12px;
+        }
+    }
+
+    .docImage {
+        height: 290px;
+        width: 350px;
+        margin-bottom: 10px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

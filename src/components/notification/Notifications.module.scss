@@ -1,0 +1,64 @@
+.notifications {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 4vh;
+    right: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: rgba(180, 179, 179, 0.847);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(139, 139, 139, 0.863);
+    }
+}
+
+.notification {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    background-color: #e0e8ee;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 0 5px 7px 0;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 3px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.arrowIcon {
+    width: 11px;
+    margin: 0 0 1px 4px;
+    transform: rotate(-90deg);
+}
+
+.closeIcon {
+    position: absolute;
+    width: 15px;
+    right: 10px;
+    top: 7px;
+    cursor: pointer;
+}

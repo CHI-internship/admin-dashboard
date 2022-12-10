@@ -1,33 +1,25 @@
 import {
-    Box,
-    TextField,
-    Typography,
-    Button,
-    CssBaseline,
-    Container,
     Alert,
     AlertTitle,
+    Box,
+    Button,
+    Container,
+    CssBaseline,
+    TextField,
+    Typography,
 } from '@mui/material';
-import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import * as yup from 'yup';
 
 const validationSchema = yup.object({
-    newPassword: yup
-        .string('Enter new password')
-        .required('Password is required')
-        .matches(
-            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
-            'Password must contain at least 8 Characters, One Uppercase, One Lowercase and One Number'
-        ),
-    confirmPassword: yup
-        .string('Confirm password')
-        .required('Password is required')
-        .oneOf([yup.ref('newPassword')], 'Passwords don`t match'),
+    recEmail: yup
+        .string('Enter valid admin email to recover')
+        .required('Email is required'),
 });
 
-export default function ResetPassword() {
+export default function ForgotPassword() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
     const timer = useRef(null);
@@ -38,15 +30,11 @@ export default function ResetPassword() {
 
     const formik = useFormik({
         initialValues: {
-            newPassword: '',
-            confirmPassword: '',
+            recEmail: '',
         },
         validationSchema: validationSchema,
         onSubmit: async values => {
-            console.log({
-                newPassword: values.newPassword,
-                confirmPassword: values.confirmPassword,
-            });
+            console.log(values.recEmail);
 
             setSuccessAlert(true);
             timer.current = setTimeout(() => {
@@ -61,7 +49,7 @@ export default function ResetPassword() {
             {successAlert ? (
                 <Alert severity="success">
                     <AlertTitle>Success</AlertTitle>
-                    Your password has been updated!
+                    Check your email for further action!
                     <p>
                         <strong>Redirecting to Sing In page...</strong>
                     </p>
@@ -79,7 +67,7 @@ export default function ResetPassword() {
                 }}
             >
                 <Typography component="h1" variant="h5">
-                    Reset Password
+                    Recover password
                 </Typography>
                 <Box
                     component="form"
@@ -89,39 +77,19 @@ export default function ResetPassword() {
                     <TextField
                         margin="normal"
                         fullWidth
+                        id="recEmail"
+                        label="Email Address"
+                        name="recEmail"
                         error={
-                            formik.touched.newPassword &&
-                            Boolean(formik.errors.newPassword)
+                            formik.touched.recEmail &&
+                            Boolean(formik.errors.recEmail)
                         }
                         helperText={
-                            formik.touched.newPassword &&
-                            formik.errors.newPassword
+                            formik.touched.recEmail && formik.errors.recEmail
                         }
-                        id="newPassword"
-                        label="New Password"
-                        name="newPassword"
-                        type="password"
-                        value={formik.values.newPassword}
+                        value={formik.values.recEmail}
                         onChange={formik.handleChange}
                         autoFocus
-                    />
-                    <TextField
-                        margin="normal"
-                        fullWidth
-                        error={
-                            formik.touched.confirmPassword &&
-                            Boolean(formik.errors.confirmPassword)
-                        }
-                        helperText={
-                            formik.touched.confirmPassword &&
-                            formik.errors.confirmPassword
-                        }
-                        id="confirmPassword"
-                        label="Confirm Password"
-                        name="confirmPassword"
-                        type="password"
-                        value={formik.values.confirmPassword}
-                        onChange={formik.handleChange}
                     />
                     <Button
                         type="submit"
@@ -129,7 +97,7 @@ export default function ResetPassword() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Reset Password
+                        Recover
                     </Button>
                 </Box>
             </Box>

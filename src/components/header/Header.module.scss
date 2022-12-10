@@ -1,0 +1,33 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.menuItem {
+    color: #fff;
+}
+
+.menuItem {
+    margin-right: 15px;
+}
+
+.activeLink {
+    border-bottom: 1px solid #fff;
+}
+
+.logoutIcon {
+    width: 20px;
+    height: 25px;
+    cursor: pointer;
+    color: #fff;
+}
