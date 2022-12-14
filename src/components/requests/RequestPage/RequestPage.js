@@ -4,15 +4,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import style from './RequestPage.module.scss'
+import { Docs } from './Docs';
 import adminService from '../../../api/admin.api'
-import downloadIcon from '../../../images/download.svg'
 
 export default function RequestPage() {
   const [request, setRequest] = useState({})
   const [rejectReason, setRejectReason] = useState('')
   const { id } = useParams()
   const navigate = useNavigate()
-  const docExt = request?.document?.split('.').pop()
 
   const handleApprove = async () => {
     await adminService.approveRequest(request.userId, true);
@@ -27,23 +26,11 @@ export default function RequestPage() {
     adminService.getVolunteerRequest(+id).then(data => setRequest(data))
   }
 
-  useEffect(() => {
-    getRequest()
-  }, [])
+  useEffect(() => { getRequest() }, [ id ])
 
   return (
     <div className={style.page}>
-      <div className={style.docs}>
-        {
-          docExt == 'pdf' ?
-            <iframe src={"https://docs.google.com/gview?url=" + request.document + "&embedded=true"} />
-            :
-            <div className={style.docImage} style={{ backgroundImage: `url(${request.document})` }} />
-        }
-        <div className={style.download} onClick={() => location = request.document}>
-          Download <img src={downloadIcon} />
-        </div>
-      </div>
+      <Docs documents={request?.documents} />
       <div className={style.info}>
         <div>
           <div className={style.infoItem}>Country: {request?.country}</div>
