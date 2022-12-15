@@ -30,11 +30,15 @@ function App() {
                         />
                         <Route
                             path="/admin/request"
-                            element={<RequestList />}
+                            element={<RequestList requestsType="open" />}
                         />
                         <Route
                             path="/admin/request/:id"
                             element={<RequestPage />}
+                        />
+                        <Route
+                            path="/admin/request-closed"
+                            element={< RequestList requestsType="closed" />}
                         />
                         <Route path="*" element={<NoMatch />} />
                     </Routes>

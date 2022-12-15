@@ -23,13 +23,13 @@ class AdminService {
 
   getVolunteerRequest(id) {
     return axiosInstance
-      .get(`admin/requests/${id}`)
+      .get(`admin/requests/${ id }`)
       .then(data => data.data)
   }
 
-  approveRequest(userId, status, message = null) {
+  changeRequestStatus(userId, status, message) {
     return axiosInstance
-      .post('admin/requests/', {userId, status, message})
+      .post('admin/requests/', { userId, status, message })
       .then(data => data.data)
   }
 }
