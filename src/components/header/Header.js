@@ -4,12 +4,12 @@ import { useContext, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import style from './Header.module.scss';
-import { RequestContext } from '../../context/request.context';
 import logo from '../../images/Logo.svg';
+import { RequestContext } from '../../context/request.context';
 import { ReactComponent as LogoutIcon } from '../../images/logout.icon.svg'
 
 const Header = () => {
-    const { requests, authorized, setAuthorized } = useContext(RequestContext)
+    const { requests, closedRequests, authorized, setAuthorized } = useContext(RequestContext)
     const navigate = useNavigate()
 
     const logout = () => {
@@ -37,6 +37,12 @@ const Header = () => {
                             <NavLink to="/admin/request" className={({ isActive }) =>
                                 cn(style.menuItem, { [style.activeLink]: isActive })}>
                                 Open requests ({requests.length})
+                            </NavLink>
+                            <NavLink
+                                to="/admin/request-closed"
+                                className={({ isActive }) =>
+                                    cn(style.menuItem, { [style.activeLink]: isActive })}>
+                                Closed requests ({closedRequests.length})
                             </NavLink>
                             <Button onClick={logout} sx={{ padding: '0', margin: '0 -10px' }}>
                                 <LogoutIcon className={style.logoutIcon} />

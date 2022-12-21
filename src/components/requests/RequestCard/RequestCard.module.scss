@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,12 +12,34 @@
     margin: 0 auto 10px;
 }
 
+.status {
+    position: absolute;
+    top: -7px;
+    left: -17px;
+    font-size: 13px;
+    padding: 2px 5px;
+    border-radius: 8px;
+}
+
+.open {
+    background-color: #f1e489;
+}
+
+.approved {
+    background-color: hsl(120deg 35% 81%);
+}
+
+.rejected {
+    background-color: #db9494;
+}
+
 .arrowContainer {
     transition: all .4s;
     padding: 13px 13px 13px 17px;
 
     .arrow {
         width: 25px;
+        height: 25px;
         transform: rotate(-90deg);
     }
 

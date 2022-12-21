@@ -26,6 +26,11 @@
         "no-console": "warn",
         "react/react-in-jsx-scope": "off",
         "import/no-duplicates": "warn",
+        "react/prop-types": "warn",
+        "template-curly-spacing": [
+            "error",
+            "never"
+        ],
         "no-multiple-empty-lines": [
             "warn",
             {
