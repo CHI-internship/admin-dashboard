@@ -16,7 +16,7 @@ export const RequestCard = (request) => {
             </div>
             <Link
                 className={style.arrowContainer}
-                to={`/admin/request/${ request.request.id }`}
+                to={`/admin/request/${request.request.id}`}
                 state={request.request.id}
             >
                 <img src={arrowIcon} className={style.arrow} />

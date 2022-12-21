@@ -23,7 +23,7 @@ class AdminService {
 
   getVolunteerRequest(id) {
     return axiosInstance
-      .get(`admin/requests/${ id }`)
+      .get(`admin/requests/${id}`)
       .then(data => data.data)
   }
 
