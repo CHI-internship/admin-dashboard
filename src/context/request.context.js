@@ -23,7 +23,7 @@ export function useRequests() {
         realodRequests();
 
         const eventSource = new EventSource(
-            `${ process.env.REACT_APP_BASE_SERVICE_URL }admin/requests/sse`)
+            `${process.env.REACT_APP_BASE_SERVICE_URL}admin/requests/sse`)
         eventSource.onmessage = ({ data }) => {
             const newRequest = JSON.parse(data);
             setRequests(prev => [{ ...newRequest.request, isNew: true }, ...prev]);
