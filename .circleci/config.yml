@@ -1,0 +1,25 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+jobs:
+  run_lint: 
+    executor: node/default 
+    steps:
+      - checkout
+      - node/install:
+          node-version: "16.15.1"
+      - run:
+          command: npm i
+          name: Run installation of packages
+      - run:
+          name: Run lint check
+          command: npm run lint
+workflows:
+  admin-dashboard-workflow:
+    jobs:
+      - run_lint:
+          filters:
+            branches:
+              only:
+                - main
+                - dev
