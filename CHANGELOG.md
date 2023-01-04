@@ -1,5 +1,12 @@
 
 
+## [0.3.1](https://github.com/CHI-internship/admin-dashboard/compare/0.3.0...0.3.1) (2023-01-04)
+
+
+### Bug Fixes
+
+* test5 release ([aa6e72a](https://github.com/CHI-internship/admin-dashboard/commit/aa6e72aa12ce836ccf32e7e8c844dffdd200558f))
+
 ## 0.3.0 (2023-01-04)
 
 
