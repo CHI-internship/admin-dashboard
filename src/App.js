@@ -16,10 +16,7 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/admin/sign-in" element={<SignIn />} />
-                        <Route
-                            path="/admin/forgot-password"
-                            element={<ForgotPassword />}
-                        />
+                        <Route path="/admin/forgot-password" element={<ForgotPassword />} />
                         <Route
                             path="/admin/reset-password"
                             element={<ResetPassword />}
