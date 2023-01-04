@@ -2,6 +2,7 @@
 
 * fix: test2 ([a288862](https://github.com/CHI-internship/admin-dashboard/commit/a288862))
 * fix: test3 ([9cda6c5](https://github.com/CHI-internship/admin-dashboard/commit/9cda6c5))
+* fix: update changelog ([b7e0518](https://github.com/CHI-internship/admin-dashboard/commit/b7e0518))
 * fix: update commitlint config ([c09acc2](https://github.com/CHI-internship/admin-dashboard/commit/c09acc2))
 * feat: add release script ([09ba444](https://github.com/CHI-internship/admin-dashboard/commit/09ba444))
 * add .editconfig file ([1e8fe32](https://github.com/CHI-internship/admin-dashboard/commit/1e8fe32))
