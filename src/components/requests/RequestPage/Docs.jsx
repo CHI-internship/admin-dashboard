@@ -20,7 +20,7 @@ export const Docs = ({ documents }) => {
                             />
                             : <div
                                 className={style.docImage}
-                                style={{ backgroundImage: `url(${ item })` }}
+                                style={{ backgroundImage: `url(${item})` }}
                             />
                         }
                     </div>
