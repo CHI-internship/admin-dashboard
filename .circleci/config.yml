@@ -17,8 +17,4 @@ jobs:
 workflows:
   admin-dashboard-workflow:
     jobs:
-      - run_lint:
-          filters:
-            branches:
-              only:
-                - main
+      - run_lint
