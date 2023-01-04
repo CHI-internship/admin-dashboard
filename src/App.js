@@ -21,10 +21,7 @@ function App() {
                             path="/admin/reset-password"
                             element={<ResetPassword />}
                         />
-                        <Route
-                            path="/admin/update-password"
-                            element={<UpdatePassword />}
-                        />
+                        <Route path="/admin/update-password" element={<UpdatePassword />} />
                         <Route
                             path="/admin/request"
                             element={<RequestList requestsType="open" />}
