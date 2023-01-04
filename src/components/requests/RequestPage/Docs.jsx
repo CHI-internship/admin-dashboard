@@ -18,10 +18,7 @@ export const Docs = ({ documents }) => {
                             ? <iframe
                                 src={"https://docs.google.com/gview?url=" + item + "&embedded=true"}
                             />
-                            : <div
-                                className={style.docImage}
-                                style={{ backgroundImage: `url(${item})` }}
-                            />
+                            : <div className={style.docImage} style={{ backgroundImage: `url(${item})` }} />
                         }
                     </div>
                 )}
