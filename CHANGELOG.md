@@ -2,6 +2,7 @@
 
 * fix: test2 ([a288862](https://github.com/CHI-internship/admin-dashboard/commit/a288862))
 * fix: test3 ([9cda6c5](https://github.com/CHI-internship/admin-dashboard/commit/9cda6c5))
+* fix: update changelog ([8a254ba](https://github.com/CHI-internship/admin-dashboard/commit/8a254ba))
 * fix: update changelog ([a06bc69](https://github.com/CHI-internship/admin-dashboard/commit/a06bc69))
 * fix: update changelog ([4f5b0ab](https://github.com/CHI-internship/admin-dashboard/commit/4f5b0ab))
 * fix: update changelog ([50f6d3a](https://github.com/CHI-internship/admin-dashboard/commit/50f6d3a))
