@@ -1,0 +1,1 @@
+conventional-changelog -p commits -i CHANGELOG.md -s -r 0

@@ -40,6 +40,11 @@
       "react-app/jest"
     ]
   },
+  "husky": {
+    "hooks": {
+      "post-commit": "run-changelog"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
